@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
         takeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(MainActivity.this, TakeItemActivity.class);
+                startActivity(i);
             }
         });
         northButton.setOnClickListener(new View.OnClickListener() {
