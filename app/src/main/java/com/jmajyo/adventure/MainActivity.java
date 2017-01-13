@@ -12,20 +12,22 @@ import com.jmajyo.adventure.model.Item;
 import com.jmajyo.adventure.model.MapGenerator;
 import com.jmajyo.adventure.model.Room;
 
-import java.util.LinkedList;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
-
-    ImageButton helpButton;
-    TextView mainText;
-    ImageButton inventoryButton;
-    ImageButton dropButton;
-    ImageButton takeButton;
-    ImageButton northButton;
-    ImageButton eastButton;
-    ImageButton southButton;
-    ImageButton westButton;
-    ImageButton lookButton;
+    //Esto es lo mismo que el findviewbyid solo que con la libreria butterknife. este metodo lo utilizan todos los programadores
+    //pq es mucho más cómodo y se ve mejor.
+    @BindView(R.id.activity_main_help_button)   ImageButton helpButton;
+    @BindView(R.id.activity_main_scene_text)    TextView mainText;
+    @BindView(R.id.activity_main_inventory)     ImageButton inventoryButton;
+    @BindView(R.id.activity_main_drop_button)   ImageButton dropButton;
+    @BindView(R.id.activity_main_take_button)   ImageButton takeButton;
+    @BindView(R.id.activity_main_north_button)  ImageButton northButton;
+    @BindView(R.id.activity_main_east_button)   ImageButton eastButton;
+    @BindView(R.id.activity_main_south_button)  ImageButton southButton;
+    @BindView(R.id.activity_main_west_button)   ImageButton westButton;
+    @BindView(R.id.activity_main_look_button)   ImageButton lookButton;
 
     Inventory inventory = new Inventory();
     Room currentRoom;
@@ -34,21 +36,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mainText = (TextView) findViewById(R.id.activity_main_scene_text);//para poner aquí la descripción de la habitación.
-        helpButton = (ImageButton) findViewById(R.id.activity_main_help_button);
-        inventoryButton = (ImageButton) findViewById(R.id.activity_main_inventory);
-        dropButton = (ImageButton) findViewById(R.id.activity_main_drop_button);
-        takeButton = (ImageButton) findViewById(R.id.activity_main_take_button);
-        northButton = (ImageButton) findViewById(R.id.activity_main_north_button);
-        eastButton = (ImageButton) findViewById(R.id.activity_main_east_button);
-        southButton = (ImageButton) findViewById(R.id.activity_main_south_button);
-        westButton = (ImageButton) findViewById(R.id.activity_main_west_button);
-        lookButton = (ImageButton) findViewById(R.id.activity_main_look_button);
+        ButterKnife.bind(this);
 
         helpButton.setOnClickListener(new View.OnClickListener() {//a partir de new, me creo una clase anonima que tiene el método onclick. NO aparece la etiqueta de Class ni el nombre de la clase pq al crearla dentro de la llamada no hace falta.
             @Override                                               //Del mismo se podría hacer esto creando la clase justo arriba, dentro del propio metodo oncreate. ahí si tendría que ponerle la etiqueta class y el nombre y luego pasarle a esto el nombre del objeto creado
-            public void onClick(View view) {                        //otro metodo posible sería crearse la clase fuera del metodo oncreate dentro de la otra clase
+            public void onClick(View view) {   //otro metodo posible sería crearse la clase fuera del metodo oncreate dentro de la otra clase
 
                 Intent i = new Intent(MainActivity.this, HelpActivity.class);
                 startActivity(i);
@@ -105,27 +97,11 @@ public class MainActivity extends AppCompatActivity {
         lookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showRoomsItemsAndDescription();
+                mainText.setText(currentRoom.getDescription() + "\n" + currentRoom.getRoomItems());
             }
         });
         initGame();
         repaintScene();
-        //mainText.setText(currentRoom.getDescription());
-    }
-
-    private void showRoomsItemsAndDescription() {
-        LinkedList<Item> itemsCurrentRoom = new LinkedList<Item>();
-        String currentRoomItems = new String();
-        itemsCurrentRoom = currentRoom.getItems();
-        currentRoomItems = currentRoom.getDescription() + "\n";
-        if(itemsCurrentRoom == null)
-            currentRoomItems = currentRoomItems + "Habitación vacía.";
-        else {
-            for (Item item : itemsCurrentRoom) {
-                currentRoomItems = currentRoomItems + item.getName() + "\n";
-            }
-        }
-        mainText.setText(currentRoomItems);
     }
 
 

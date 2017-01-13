@@ -6,15 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class IntroActivity extends AppCompatActivity {
 
-    Button playButton;
+    @BindView(R.id.activity_intro_button) Button playButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
+        ButterKnife.bind(this);
 
-        playButton = (Button) findViewById(R.id.activity_intro_button);
+
 
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override

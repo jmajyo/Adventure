@@ -24,6 +24,16 @@ public class Room {
         return items;
     }
 
+    public String getRoomItems(){
+        if(this.items == null)
+            return  "Habitación vacía";
+        String result = "";
+        for (Item item : this.items) {
+            result = result + "-" + item.getName() + "\n";
+        }
+        return result;
+    }
+
     public void setItems(LinkedList<Item> items) {
         this.items = items;
     }
