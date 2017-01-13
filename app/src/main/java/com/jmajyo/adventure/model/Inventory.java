@@ -9,10 +9,12 @@ public class Inventory {
     public Inventory() {
     }
 
-    public void print(){
+    public String print(){
+        String inventario = new String();
             for (Item item: inventory ) {
-            System.out.println(item.getName());
+                inventario = inventario + item.getName() + "\n";
         }
+        return inventario;
     }
 
     public LinkedList<Item> getInventory() {

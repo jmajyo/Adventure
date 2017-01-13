@@ -57,10 +57,7 @@ public class MainActivity extends AppCompatActivity {
         inventoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //for(Item item: inventory)
-                //{
-                   // mainText.setText(item.getName());
-                //}
+                mainText.setText(inventory.print());
 
             }
         });
