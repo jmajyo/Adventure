@@ -104,13 +104,27 @@ public class MainActivity extends AppCompatActivity {
         lookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LinkedList<Item> items = currentRoom.getItems();
-                mainText.setText(items.toString());
+                showRoomsItemsAndDescription();
             }
         });
         initGame();
         repaintScene();
         //mainText.setText(currentRoom.getDescription());
+    }
+
+    private void showRoomsItemsAndDescription() {
+        LinkedList<Item> itemsCurrentRoom = new LinkedList<Item>();
+        String currentRoomItems = new String();
+        itemsCurrentRoom = currentRoom.getItems();
+        currentRoomItems = currentRoom.getDescription() + "\n";
+        if(itemsCurrentRoom == null)
+            currentRoomItems = currentRoomItems + "Habitación vacía.";
+        else {
+            for (Item item : itemsCurrentRoom) {
+                currentRoomItems = currentRoomItems + item.getName() + "\n";
+            }
+        }
+        mainText.setText(currentRoomItems);
     }
 
 
