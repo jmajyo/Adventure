@@ -1,9 +1,11 @@
 package com.jmajyo.adventure.model;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Inventory {
-
+public class Inventory implements Serializable {
+//Serializable es un interfaz que permite coger los datos de memoria en un objeto y ponerlos en otro
+//Lo de serializable sirve para pasar cualquier cosa por un Intent
     private LinkedList<Item> inventory = new LinkedList<>();
 
     public Inventory() {

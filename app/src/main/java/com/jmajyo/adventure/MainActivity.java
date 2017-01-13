@@ -56,7 +56,12 @@ public class MainActivity extends AppCompatActivity {
         dropButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(MainActivity.this, DropItemActivity.class);
+                i.putExtra("KEY_INVENTORY", inventory); //le paso el inventario a la nueva ventana. Una especie de mapa, la clave es KEY_INVENTORY y el "mapa" es inventory
+                                                        //Para que funcionará hemos tenido que extender la clase Inventory con serializable.
+                startActivityForResult(i,1); //El número es para indicarle que actividad le devuelve los datos. Porque tu puedes lanzar actividadades desde muchos
+                                             //sitios y cuando vuelvan al main entraran todas por un main, por lo que tenemos que saber de donde vienen para tratar
+                                             //los datos
             }
         });
         takeButton.setOnClickListener(new View.OnClickListener() {
