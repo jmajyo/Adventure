@@ -27,8 +27,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
 
+    //añado la libreria butterknife. Para manejar las vistas más facil
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
+    //para añadir la libreria con las listas mejoradas
     compile 'com.android.support:recyclerview-v7:25.0.1'
+    //añade la libreria de soporte de android. En este proyecto la necesitamos para los Snackbar
+    compile 'com.android.support:design:25.1.0'
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle" >
+
+    <gradient
+        android:centerColor="#8EDBA3"
+        android:endColor="#006321"
+        android:gradientRadius="400"
+        android:startColor="#8EDBA3"
+        android:type="radial" >
+    </gradient>
+<!--en type tambien puede ir linear
+tambien hay otro comando que es angle, y cambia la orientación del gradiente-->
+</shape>

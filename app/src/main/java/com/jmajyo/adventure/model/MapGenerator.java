@@ -18,18 +18,39 @@ public class MapGenerator {
         Room room4 = new Room();
         room4.setDescription("[Sala 4] No sabemos lo que hay por aquí habría que investigar.");
 
+        Room room5 = new Room();
+        room5.setDescription("[Sala 5] Ni idea de que poner por ahora");
+
+        Room room6 = new Room();
+        room6.setDescription("[Sala 6] Ni iadfasdfasdf");
+
+        Room room7 = new Room();
+        room7.setDescription("[Sala 7] fuuu fuuu fuuu fuuu");
+
+        Room room8 = new Room();
+        room8.setDescription("[Sala 8] Vete tu a saber");
+
         //link rooms (enlazo las habitaciones)
         room1.setRoomSouth(room2);
         room1.setRoomEast(room4);
 
         room2.setRoomNorh(room1);
         room2.setRoomEast(room3);
+        room2.setRoomWest(room5);
 
         room3.setRoomWest(room2);
         room3.setRoomNorh(room4);
 
         room4.setRoomWest(room1);
         room4.setRoomSouth(room3);
+
+        room5.setRoomEast(room2);
+        room5.setRoomSouth(room6);
+
+        room6.setRoomNorh(room5);
+        room6.setRoomWest(room7);
+
+        room7.setRoomEast(room6);
 
         //Creo varios Itens en la habitación 3
         LinkedList<Item> itemsRoom3 = new LinkedList<>();

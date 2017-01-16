@@ -1,7 +1,9 @@
 package com.jmajyo.adventure.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Inventory implements Serializable {
 //Serializable es un interfaz que permite coger los datos de memoria en un objeto y ponerlos en otro
@@ -9,6 +11,16 @@ public class Inventory implements Serializable {
     private LinkedList<Item> inventory = new LinkedList<>();
 
     public Inventory() {
+    }
+
+    public List<String> getItemNames(){
+        List<String> names = new ArrayList<>();
+
+        for(Item item: inventory){
+            names.add(item.getName());
+        }
+
+        return names;
     }
 
     public String print(){
@@ -27,9 +39,12 @@ public class Inventory implements Serializable {
         this.inventory.add(item);
     }
 
-    public void delete(Item item){
-        this.inventory.remove(item);
+    public void delete(int itemPosition){
+        this.inventory.remove(itemPosition);
     }
 
 
+    public Item getItem(int itemPosition) {
+        return inventory.get(itemPosition);
+    }
 }

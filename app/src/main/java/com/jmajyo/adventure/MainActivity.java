@@ -2,6 +2,7 @@ package com.jmajyo.adventure;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -11,6 +12,7 @@ import com.jmajyo.adventure.model.Inventory;
 import com.jmajyo.adventure.model.Item;
 import com.jmajyo.adventure.model.MapGenerator;
 import com.jmajyo.adventure.model.Room;
+import com.jmajyo.adventure.util.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, DropItemActivity.class);
-                i.putExtra("KEY_INVENTORY", inventory); //le paso el inventario a la nueva ventana. Una especie de mapa, la clave es KEY_INVENTORY y el "mapa" es inventory
+                i.putExtra(Constants.KEY_INTENT_INVENTORY, inventory); //le paso el inventario a la nueva ventana. Una especie de mapa, la clave es KEY_INVENTORY y el "mapa" es inventory
                                                         //Para que funcionará hemos tenido que extender la clase Inventory con serializable.
                 startActivityForResult(i,1); //El número es para indicarle que actividad le devuelve los datos. Porque tu puedes lanzar actividadades desde muchos
                                              //sitios y cuando vuelvan al main entraran todas por un main, por lo que tenemos que saber de donde vienen para tratar
@@ -155,4 +157,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1){
+            if(resultCode == RESULT_OK){
+                int itemPosition = data.getIntExtra(Constants.KEY_INTENT_DROP_ITEM_POSITION, -1);
+
+                Item item = inventory.getItem(itemPosition);
+                //item = inventory.getInventory().get(itemPosition); igual que la linea de arriba. Puede servir esta linea sino te quieres crear el metodo getItem
+                currentRoom.getItems().add(item);
+                inventory.delete(itemPosition);
+
+                Snackbar.make(mainText, getString(R.string.dropped_item_text) + item.getName(), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        }
+    }
 }

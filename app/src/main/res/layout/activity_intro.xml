@@ -8,13 +8,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/main_background"
     tools:context="com.jmajyo.adventure.IntroActivity">
 
     <ImageView
         android:id="@+id/activity_intro_image"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:src="@drawable/adventure"/>
+        android:layout_height="200dp"
+        android:src="@drawable/adventure"
+        android:layout_centerInParent="true"/>
 
     <Button
         android:id="@+id/activity_intro_button"

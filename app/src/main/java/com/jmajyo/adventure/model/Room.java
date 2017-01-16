@@ -20,7 +20,11 @@ public class Room {
         this.description = description;
     }
 
+    // lazy getter
     public LinkedList<Item> getItems() {
+        if(items == null){
+            items = new LinkedList<>();
+        }
         return items;
     }
 
