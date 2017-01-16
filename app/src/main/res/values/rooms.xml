@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="room_desc1">[Sala 1] Te encuentras en un aula con las contraventanas semicerradas. Olor a ordenador encenddio y cerebro firto impregna tus sentidos. </string>
+    <string name="room_img1"> http://www.ejemplode.com/images/uploads/biologia/bosque.jpg</string>
+
+    <string name="room_desc2"> [Sala 2] Te deslumbra la luz del Sol que se filtra por las ventanas del pasillo. Sientes un escalofrío al ver a un grajo arrastrandose.</string>
+    <string name="room_img2"> http://static.betazeta.com/www.veoverde.com/wp-content/uploads/2013/06/bosque-y-aguas.jpg</string>
+
+    <string name="room_desc3"> [Sala 3] Hay una barra de bar con tapicería roja pasada de moda. Huele a tabaco usado y lágrimas de tango.</string>
+    <string name="room_img3"> http://www.elcorreodelsol.com/sites/default/files/350-bosque.jpg</string>
+
+    <string name="room_desc4"> [Sala 4] No sabemos lo que hay por aquí habría que investigar.</string>
+    <string name="room_img4"> http://www.ejemplode.com/images/uploads/biologia/bosque.jpg</string>
+
+    <string name="room_desc5"> [Sala 5] Ni idea de que poner por ahora</string>
+    <string name="room_img5"> http://www.ejemplode.com/images/uploads/biologia/bosque.jpg</string>
+
+    <string name="room_desc6"> [Sala 6] Ni iadfasdfasdf</string>
+    <string name="room_img6"> http://www.ejemplode.com/images/uploads/biologia/bosque.jpg</string>
+
+    <string name="room_desc7"> [Sala 7] fuuu fuuu</string>
+    <string name="room_img7"> http://www.ejemplode.com/images/uploads/biologia/bosque.jpg</string>
+
+    <string name="room_desc8"> [Sala 8] Pos no te digo yo que...</string>
+    <string name="room_img8"> http://www.ejemplode.com/images/uploads/biologia/bosque.jpg</string>
+
+
+
+
+</resources>
