@@ -10,6 +10,13 @@ public class MapGenerator {
     public static Room initialRoom;
 
     public static void generate(Context context){
+
+        Monster monster1 = new Monster();
+        monster1.setName(context.getString(R.string.monster1_name));
+        monster1.setDescription(context.getString(R.string.monster1_description));
+        monster1.setImageUrl(context.getString(R.string.monster1_imageUrl));
+
+
         Room room1 = new Room();
         room1.setDescription(context.getString(R.string.room_desc1));
         room1.setImageUrl(context.getString(R.string.room_img1));
@@ -25,6 +32,7 @@ public class MapGenerator {
         Room room4 = new Room();
         room4.setDescription(context.getString(R.string.room_desc4));
         room4.setImageUrl(context.getString(R.string.room_img4));
+        room4.setMonster(monster1);
 
 
         Room room5 = new Room();

@@ -4,4 +4,9 @@
     <string name="back_to_adventure">Back to Adventure</string>
     <string name="play">Play</string>
     <string name="dropped_item_text">"Dropped item "</string>
+
+    <string name="monster1_description">Chiquito salvaje aparecio, Cuidado te ataca con el condermorrrr</string>
+    <string name="monster1_imageUrl">http://yofuiaegb.com/wp-content/uploads/2012/09/Chiquito-de-la-calzada.jpg</string>
+    <string name="monster1_name">Chiquitorrrr</string>
+    <string name="attack">Al ataque!!</string>
 </resources>

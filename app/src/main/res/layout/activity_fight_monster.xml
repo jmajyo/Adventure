@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_take_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jmajyo.adventure.FightMonsterActivity">
+
+    <TextView
+        android:id="@+id/activity_fight_monster_title"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/activity_monster_fight_monster_life_text"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textStyle="bold|italic"
+        android:textSize="30sp"
+        tools:text="Chiquito"
+        android:textColor="#FF0000"
+        />
+
+    <TextView
+        android:id="@+id/activity_monster_description"
+        android:layout_width="match_parent"
+        android:textSize="20sp"
+        android:layout_height="70dp"
+        android:layout_below="@id/activity_fight_monster_title"/>
+
+    <ImageView
+        android:id="@+id/activity_fight_monster_image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/activity_monster_description"/>
+
+    <Button
+        android:id="@+id/activity_monster_fight_button_attack"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/activity_fight_monster_image"
+        android:text="@string/attack"
+        />
+    <TextView
+        android:id="@+id/activity_monster_fight_your_life_text"
+        android:text="100"
+        android:textSize="30dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:background="#00FF00"
+        android:textColor="#FFF"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/activity_monster_fight_monster_life_text"
+        android:text="100"
+        android:textSize="30dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:background="#FF0000"
+        android:textColor="#FFF"
+        android:gravity="center"
+        />
+
+
+</RelativeLayout>

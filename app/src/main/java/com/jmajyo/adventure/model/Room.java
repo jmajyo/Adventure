@@ -9,10 +9,20 @@ public class Room implements Serializable{
     private String description;
 
     private LinkedList<Item> items;
+    private Monster monster;
 
     private Room roomNorh;
     private Room roomEast;
     private Room roomWest;
+
+    public Monster getMonster() {
+        return monster;
+    }
+
+    public void setMonster(Monster monster) {
+        this.monster = monster;
+    }
+
     private Room roomSouth;
 
     private String imageUrl;
