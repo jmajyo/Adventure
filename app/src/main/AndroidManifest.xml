@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TakeItemActivity"
+        <activity android:name=".FightMonsterActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".DropItemActivity"
             android:screenOrientation="portrait"></activity>

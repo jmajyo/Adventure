@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.jmajyo.adventure.model.Inventory;
 import com.jmajyo.adventure.model.Item;
 import com.jmajyo.adventure.model.MapGenerator;
+import com.jmajyo.adventure.model.Player;
 import com.jmajyo.adventure.model.Room;
 import com.jmajyo.adventure.util.Constants;
 import com.squareup.picasso.Picasso;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.activity_main_look_button)   ImageButton lookButton;
 
     Inventory inventory = new Inventory();
+    Player player = new Player();
     Room currentRoom;
 
     @Override
@@ -170,6 +172,14 @@ public class MainActivity extends AppCompatActivity {
             westButton.setVisibility(View.VISIBLE);
         }else{
             westButton.setVisibility(View.INVISIBLE);
+        }
+
+        //check monster
+        if(currentRoom.getMonster() != null){
+            Intent i = new Intent(MainActivity.this, FightMonsterActivity.class);
+            i.putExtra("monster", currentRoom.getMonster());
+            i.putExtra("player", player);
+            startActivity(i);
         }
     }
 
