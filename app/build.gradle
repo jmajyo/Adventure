@@ -8,7 +8,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 1
-        versionName "0.2"
+        versionName "0.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -35,4 +35,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.1'
     //añade la libreria de soporte de android. En este proyecto la necesitamos para los Snackbar
     compile 'com.android.support:design:25.1.0'
+    //para instalar la libreria piccaso (carga de iamgenes)
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

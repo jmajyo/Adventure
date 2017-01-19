@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jmajyo.adventure.model.Inventory;
@@ -13,6 +14,7 @@ import com.jmajyo.adventure.model.Item;
 import com.jmajyo.adventure.model.MapGenerator;
 import com.jmajyo.adventure.model.Room;
 import com.jmajyo.adventure.util.Constants;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     //pq es mucho más cómodo y se ve mejor.
     @BindView(R.id.activity_main_help_button)   ImageButton helpButton;
     @BindView(R.id.activity_main_scene_text)    TextView mainText;
+    @BindView(R.id.activity_main_scene_image)   ImageView sceneImage;
     @BindView(R.id.activity_main_inventory)     ImageButton inventoryButton;
     @BindView(R.id.activity_main_drop_button)   ImageButton dropButton;
     @BindView(R.id.activity_main_take_button)   ImageButton takeButton;
@@ -39,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        Picasso.with(this).setIndicatorsEnabled(true);
+        Picasso.with(this).setLoggingEnabled(true);
 
         helpButton.setOnClickListener(new View.OnClickListener() {//a partir de new, me creo una clase anonima que tiene el método onclick. NO aparece la etiqueta de Class ni el nombre de la clase pq al crearla dentro de la llamada no hace falta.
             @Override                                               //Del mismo se podría hacer esto creando la clase justo arriba, dentro del propio metodo oncreate. ahí si tendría que ponerle la etiqueta class y el nombre y luego pasarle a esto el nombre del objeto creado
@@ -69,8 +75,10 @@ public class MainActivity extends AppCompatActivity {
         takeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, TakeItemActivity.class);
-                startActivity(i);
+                Intent i = new Intent(MainActivity.this, DropItemActivity.class);
+                i.putExtra(Constants.KEY_INTENT_TAKE_ITEM_FROM_ROOM, currentRoom);
+
+                startActivityForResult(i,2);
             }
         });
         northButton.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         inventory.add(trozoDePapel);
         inventory.add(polloDeGoma);
 
-        MapGenerator.generate();
+        MapGenerator.generate(this);
 
         currentRoom = MapGenerator.initialRoom;
     }
@@ -130,6 +138,14 @@ public class MainActivity extends AppCompatActivity {
     private void repaintScene() {
         //write room description on screen
         mainText.setText(currentRoom.getDescription());
+        if(currentRoom.getImageUrl() != null && currentRoom.getImageUrl().length()>1)
+        {
+            Picasso.
+                    with(this).
+                    load(currentRoom.getImageUrl()).
+                    into(sceneImage);
+        }
+
 
         //change button visibility
         if(currentRoom.getRoomNorh() != null){
@@ -171,6 +187,17 @@ public class MainActivity extends AppCompatActivity {
                 inventory.delete(itemPosition);
 
                 Snackbar.make(mainText, getString(R.string.dropped_item_text) + item.getName(), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        }else if(requestCode == 2){//take
+            if(resultCode == RESULT_OK){
+                int itemPosition = data.getIntExtra(Constants.KEY_INTENT_DROP_ITEM_POSITION, -1);
+
+                Item item = currentRoom.getItems().get(itemPosition);
+                inventory.add(item);
+                currentRoom.getItems().remove(item);
+
+                Snackbar.make(mainText, "Taken " + item.getName(), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         }

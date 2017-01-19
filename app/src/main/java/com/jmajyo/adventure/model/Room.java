@@ -1,8 +1,11 @@
 package com.jmajyo.adventure.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
-public class Room {
+public class Room implements Serializable{
     private String description;
 
     private LinkedList<Item> items;
@@ -11,6 +14,16 @@ public class Room {
     private Room roomEast;
     private Room roomWest;
     private Room roomSouth;
+
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public String getDescription() {
         return description;
@@ -79,5 +92,15 @@ public class Room {
             items = new LinkedList<>();
         }
         items.add(item);
+    }
+
+    public List<String> getItemNames() {
+        ArrayList<String> result = new ArrayList<>();
+
+        for(Item item: items){
+            result.add(item.getName());
+        }
+
+        return result;
     }
 }

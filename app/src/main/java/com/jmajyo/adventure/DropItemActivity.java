@@ -1,15 +1,18 @@
 package com.jmajyo.adventure;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.jmajyo.adventure.model.Inventory;
+import com.jmajyo.adventure.model.Room;
 import com.jmajyo.adventure.util.Constants;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,9 +33,18 @@ public class DropItemActivity extends AppCompatActivity {
         inventory = (Inventory) i.getSerializableExtra(Constants.KEY_INTENT_INVENTORY);//me devuelve el inventario que le pasamos a la hora de invocarlo
                                                         //La constante se ha creado para que no haya fallo a la hora de escribir la cadena de caracteres como clave
                                                         //Es mejor utilizar constantes como claves para EVITAR FALLOS
+        Room room = (Room)i.getSerializableExtra(Constants.KEY_INTENT_TAKE_ITEM_FROM_ROOM);
+
+        List<String> rowNames = null;
+
+        if(inventory == null){  //take
+            rowNames = room.getItemNames();
+        }else{                  //drop
+            rowNames = inventory.getItemNames();
+        }
 
         //Ahora definimos el adaptador para poder visualizarle los datos que le hemos pasado.
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, inventory.getItemNames());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, rowNames);
         itemList.setAdapter(adapter);
 
         //Fijarse bien del metodo, no es ONCLICKLISTENER si no ONITEMCLICKLISTENER
