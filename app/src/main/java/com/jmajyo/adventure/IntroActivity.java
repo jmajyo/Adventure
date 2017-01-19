@@ -7,8 +7,12 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import com.jmajyo.adventure.util.JetPlayerUtil;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.jmajyo.adventure.R.raw.jet;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -32,5 +36,8 @@ public class IntroActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        JetPlayerUtil.play(this, jet);
+
     }
 }
